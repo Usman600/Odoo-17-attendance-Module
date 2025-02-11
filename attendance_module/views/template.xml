@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="attendance_checkin_checkout" name="Attendance Check In/Out">
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="container mt-5">
+                <!-- Heading Section -->
+                <div class="text-center mb-4">
+                    <!-- Increased font size using custom CSS -->
+                    <h2 class="font-weight-bold text-primary" style="font-size: 48px;">Mark Attendance</h2> <!-- Increased font size -->
+                    <p class="lead text-muted" style="font-size: 24px;">Please track your check-in and check-out times</p> <!-- Increased font size -->
+                </div>
+
+                <!-- Status Message -->
+                <div t-if="status" class="alert alert-success text-center">
+                    <t t-esc="message"/>
+                </div>
+
+                <!-- Form Section -->
+                <div class="form-container text-center">
+                    <form action="/attendance/attendance_form" method="post">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <!-- Check In / Check Out Button -->
+                                <t t-if="not check_in">
+                                    <button type="button" class="btn btn-lg btn-success" id="check_in_button" onclick="window.location.href='/attendance/check_in'">
+                                        <span class="btn-text">Check In</span>
+                                    </button>
+                                </t>
+                                <t t-if="check_in">
+                                    <button type="button" class="btn btn-lg btn-danger" id="check_out_button" onclick="window.location.href='/attendance/check_out'">
+                                        <span class="btn-text">Check Out</span>
+                                    </button>
+                                </t>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Styling -->
+        <style>
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .form-container {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 40px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Button Styling */
+            .btn {
+                width: 100%;
+                padding: 20px;  /* Increased padding */
+                font-size: 24px;  /* Increased font size */
+                transition: background-color 0.3s ease;
+            }
+
+            /* Button Text */
+            .btn-text {
+                font-size: 24px;  /* Increased font size */
+                font-weight: bold;  /* Make text bold */
+            }
+
+            .heading {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            .alert {
+                font-size: 1.5em;  /* Increased font size */
+                margin-bottom: 20px;
+            }
+
+            /* Optional hover effect for the buttons */
+            .btn-success:hover {
+                background-color: #28a745;
+            }
+
+            .btn-danger:hover {
+                background-color: #dc3545;
+            }
+
+            /* Ensure the main container is vertically and horizontally centered */
+            .d-flex {
+                display: flex;
+                align-items: center;  /* Vertically center */
+                justify-content: center;  /* Horizontally center */
+                min-height: 100vh;  /* Full viewport height */
+            }
+        </style>
+    </template>
+</odoo>

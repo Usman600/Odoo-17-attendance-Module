@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_attendance_form" model="ir.ui.view">
+        <field name="name">attendance.record.form</field>
+        <field name="model">attendance.record</field>
+        <field name="arch" type="xml">
+
+            <form string="Employee Attendance">
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                        <field name="worked_hours"/>
+                        <field name="status"/>
+                    </group>
+                    <footer>
+                        <button name="register_attendance" type="object" string="Register Attendance"
+                                class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="view_attendance_tree" model="ir.ui.view">
+        <field name="name">attendance.record.tree</field>
+        <field name="model">attendance.record</field>
+        <field name="arch" type="xml">
+            <tree string="Attendance Records">
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="worked_hours"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_attendance_record" model="ir.actions.act_window">
+        <field name="name">Attendance Records</field>
+        <field name="res_model">attendance.record</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first attendance record
+            </p>
+        </field>
+    </record>
+
+    <record id="action_attendance_web_form" model="ir.actions.act_url">
+    <field name="name">Employee Check-In/Out</field>
+    <field name="url">/attendance/attendance_form</field> <!-- Link to the attendance form -->
+    <field name="target">new</field> <!-- This will open in a new tab -->
+</record>
+
+<menuitem id="menu_employees_attendance"
+          name="CheckIn/Checkout"
+          action="action_attendance_web_form"/>
+
+    <menuitem id="menu_employee_attendance"
+              name="Attendance"
+              action="action_attendance_record"/>
+    <!--              parent="hr.menu_hr_main"/>-->
+
+</odoo>
