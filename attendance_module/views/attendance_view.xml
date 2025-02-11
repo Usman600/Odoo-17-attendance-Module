@@ -50,8 +50,8 @@
 
     <record id="action_attendance_web_form" model="ir.actions.act_url">
     <field name="name">Employee Check-In/Out</field>
-    <field name="url">/attendance/attendance_form</field> <!-- Link to the attendance form -->
-    <field name="target">new</field> <!-- This will open in a new tab -->
+    <field name="url">/attendance/attendance_form</field>
+    <field name="target">new</field>
 </record>
 
 <menuitem id="menu_employees_attendance"
@@ -61,6 +61,6 @@
     <menuitem id="menu_employee_attendance"
               name="Attendance"
               action="action_attendance_record"/>
-    <!--              parent="hr.menu_hr_main"/>-->
+
 
 </odoo>

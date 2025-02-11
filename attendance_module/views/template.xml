@@ -3,24 +3,22 @@
     <template id="attendance_checkin_checkout" name="Attendance Check In/Out">
         <div class="d-flex justify-content-center align-items-center vh-100">
             <div class="container mt-5">
-                <!-- Heading Section -->
+
                 <div class="text-center mb-4">
-                    <!-- Increased font size using custom CSS -->
-                    <h2 class="font-weight-bold text-primary" style="font-size: 48px;">Mark Attendance</h2> <!-- Increased font size -->
-                    <p class="lead text-muted" style="font-size: 24px;">Please track your check-in and check-out times</p> <!-- Increased font size -->
+
+                    <h2 class="font-weight-bold text-primary" style="font-size: 48px;">Mark Attendance</h2>
+                    <p class="lead text-muted" style="font-size: 24px;">Please track your check-in and check-out times</p>
                 </div>
 
-                <!-- Status Message -->
                 <div t-if="status" class="alert alert-success text-center">
                     <t t-esc="message"/>
                 </div>
 
-                <!-- Form Section -->
                 <div class="form-container text-center">
                     <form action="/attendance/attendance_form" method="post">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-6">
-                                <!-- Check In / Check Out Button -->
+
                                 <t t-if="not check_in">
                                     <button type="button" class="btn btn-lg btn-success" id="check_in_button" onclick="window.location.href='/attendance/check_in'">
                                         <span class="btn-text">Check In</span>
@@ -38,7 +36,6 @@
             </div>
         </div>
 
-        <!-- Additional Styling -->
         <style>
             .container {
                 max-width: 600px;
